@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "{id}",
+  "version": "${version}",
+  "name": "{name}",
+  "description": "{description}",
+  "contact": {
+    "issues": "https://github.com/btwonion/PacketDebugger/issues",
+    "sources": "https://github.com/btwonion/PacketDebugger",
+    "homepage": "https://nyon.dev/discord"
+  },
+  "authors": [
+    "btwonion"
+  ],
+  "github": "{github}",
+  "license": ["GNU General Public License v3.0"],
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "dev.nyon.packetDebugger.MainKt::initClient"
+      }
+    ],
+    "server": [
+      {
+        "adapter": "kotlin",
+        "value": "dev.nyon.packetDebugger.MainKt::initServer"
+      }
+    ],
+    "modmenu": [
+      {
+        "adapter": "kotlin",
+        "value": "dev.nyon.simpleautodrop.config.ModMenuImpl"
+      }
+    ]
+  },
+  "mixins": [
+    "packet-debugger.mixins.json"
+  ],
+  "depends": {
+    "fabric-language-kotlin": ">=1.9.1+kotlin.1.8.10",
+    "fabric-api": ">=0.74.0+1.19.3",
+    "minecraft": ">=1.19.3"
+  },
+  "suggests": {
+    "modmenu": "5.0.2"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/pmHTtZnMd3"
+      }
+    }
+  }
+}
