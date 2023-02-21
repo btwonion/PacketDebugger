@@ -42,7 +42,7 @@ tasks {
     processResources {
         val modId = "packet-debugger"
         val modName = "PacketDebugger"
-        val modDescription = "Debugs packets sent and received"
+        val modDescription = "Mod for debugging packets sent and received"
 
         inputs.property("id", modId)
         inputs.property("group", project.group)
@@ -72,8 +72,6 @@ tasks {
         dependsOn("publish")
     }
 }
-val changelogText =
-    file("changelogs/$majorVersion.md").takeIf { it.exists() }?.readText() ?: "No changelog provided."
 
 modrinth {
     token.set(findProperty("modrinth.token")?.toString())
@@ -88,7 +86,6 @@ modrinth {
         required.project("fabric-language-kotlin")
         optional.project("modmenu")
     }
-    changelog.set(changelogText)
     syncBodyFrom.set(file("README.md").readText())
 }
 
@@ -99,7 +96,6 @@ githubRelease {
     owner(split[0])
     repo(split[1])
     tagName("v${project.version}")
-    body(changelogText)
     overwrite(true)
     releaseAssets(tasks["remapJar"].outputs.files)
     targetCommitish("main")
