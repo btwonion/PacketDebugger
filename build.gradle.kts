@@ -75,7 +75,7 @@ tasks {
 
 modrinth {
     token.set(findProperty("modrinth.token")?.toString())
-    projectId.set("lg17V3i3")
+    projectId.set("DhzL69QG")
     versionNumber.set("${project.version}")
     versionType.set("release")
     uploadFile.set(tasks["remapJar"])
