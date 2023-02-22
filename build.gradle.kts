@@ -23,6 +23,7 @@ repositories {
     mavenCentral()
     maven("https://maven.terraformersmc.com")
     maven("https://maven.parchmentmc.org")
+    maven("https://maven.isxander.dev/releases")
 }
 
 dependencies {
@@ -34,6 +35,7 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:0.14.14")
     modImplementation("net.fabricmc.fabric-api:fabric-api:0.74.0+1.19.3")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.9.1+kotlin.1.8.10")
+    modImplementation("dev.isxander:yet-another-config-lib:2.2.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     modApi("com.terraformersmc:modmenu:5.0.2")
 }
@@ -92,13 +94,13 @@ modrinth {
 githubRelease {
     token(findProperty("github.token")?.toString())
 
-    val split = githubRepo.split("/")
-    owner(split[0])
-    repo(split[1])
+    val (owner, repo) = githubRepo.split("/")
+    owner(owner)
+    repo(repo)
     tagName("v${project.version}")
     overwrite(true)
     releaseAssets(tasks["remapJar"].outputs.files)
-    targetCommitish("main")
+    targetCommitish("master")
 }
 
 tasks.withType<KotlinCompile> {
