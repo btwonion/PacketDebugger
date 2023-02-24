@@ -4,6 +4,7 @@ package dev.nyon.packetdebugger
 
 import com.mojang.blaze3d.platform.InputConstants
 import dev.nyon.packetdebugger.config.loadConfig
+import dev.nyon.packetdebugger.recording.Recording
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.minecraft.client.KeyMapping
 import net.minecraft.client.Minecraft
@@ -11,6 +12,7 @@ import org.lwjgl.glfw.GLFW
 
 const val modId = "packet-debugger"
 var client: Minecraft = Minecraft.getInstance()
+var currentRecording: Recording? = null
 
 fun initClient() {
     loadConfig()

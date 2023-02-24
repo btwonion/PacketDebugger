@@ -6,10 +6,10 @@ import net.minecraft.network.PacketListener
 import net.minecraft.network.chat.Component
 import net.minecraft.network.protocol.Packet
 
-data class ReceivedPacket<P : Packet<out PacketListener>>(
-    override val packet: P
-) : RecordedPacket<P> {
-    override fun style(packet: P): List<Component> {
+data class ReceivedPacket(
+    override val packet: Packet<out PacketListener>
+) : RecordedPacket {
+    override fun style(packet: Packet<out PacketListener>): List<Component> {
         val clazz = packet.javaClass
         val fields = clazz.declaredFields
         return buildList {
