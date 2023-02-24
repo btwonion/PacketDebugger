@@ -4,6 +4,7 @@
   "package": "dev.nyon.packetdebugger.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ConnectionMixin",
     "PacketUtilsAccessor",
     "PacketUtilsMixin"
   ],
