@@ -1,4 +1,4 @@
-package dev.nyon.packetdebugger.util
+package dev.nyon.packetdebugger.recording
 
 import dev.nyon.packetdebugger.config.config
 import java.util.*

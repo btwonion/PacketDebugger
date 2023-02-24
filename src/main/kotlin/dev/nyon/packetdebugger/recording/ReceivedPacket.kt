@@ -1,7 +1,6 @@
 package dev.nyon.packetdebugger.recording
 
 import dev.nyon.packetdebugger.config.config
-import dev.nyon.packetdebugger.util.color
 import net.minecraft.network.PacketListener
 import net.minecraft.network.chat.Component
 import net.minecraft.network.protocol.Packet
