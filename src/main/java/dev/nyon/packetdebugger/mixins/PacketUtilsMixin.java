@@ -23,7 +23,8 @@ public class PacketUtilsMixin {
         at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/util/thread/BlockableEventLoop;executeIfPossible(Ljava/lang/Runnable;)V"
-        )
+        ),
+        cancellable = true
     )
     private static <T extends PacketListener> void handleReceivedPackets(
         Packet<T> packet,
@@ -51,6 +52,7 @@ public class PacketUtilsMixin {
             });
             throw RunningOnDifferentThreadException.RUNNING_ON_DIFFERENT_THREAD;
         }
-        if (currentRecording != null) currentRecording.getPackets().add(new ReceivedPacket(packet));
+        else if (currentRecording != null) currentRecording.getPackets().add(new ReceivedPacket(packet));
+        ci.cancel();
     }
 }
