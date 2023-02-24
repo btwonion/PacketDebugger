@@ -10,7 +10,8 @@ data class ConfigModel(
     val receivedPacketColor: Int = 0x317C79,
     val sentPacketColor: Int = 0x7C2C75,
     val fullClassNameColor: Int = 0x444243,
-    val typeColors: TypeColors = TypeColors()
+    val typeColors: TypeColors = TypeColors(),
+    val serverOptions: ServerOptions = ServerOptions()
 )
 
 @Serializable
@@ -23,4 +24,10 @@ data class TypeColors(
     val doubleColor: Int = 0x098C5A,
     val stringColor: Int = 0x12748C,
     val uuidColor: Int = 0x13428C
+)
+
+@Serializable
+data class ServerOptions(
+    val sentPacketItemID: Int = 1,
+    val receivedPacketItemID: Int = 2
 )
