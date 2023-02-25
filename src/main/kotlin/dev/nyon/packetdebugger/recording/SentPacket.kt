@@ -8,8 +8,9 @@ import net.minecraft.network.chat.Component
 import net.minecraft.network.protocol.Packet
 
 data class SentPacket(
-    override val packet: Packet<out PacketListener>, override val executed: Instant = Clock.System.now()
+    override val packet: Packet<out PacketListener>
 ) : RecordedPacket {
+    override val executed: Instant = Clock.System.now()
     override fun style(): List<Component> {
         val clazz = packet.javaClass
         val fields = clazz.declaredFields

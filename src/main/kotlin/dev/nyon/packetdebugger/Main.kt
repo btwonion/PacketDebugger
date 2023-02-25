@@ -32,7 +32,16 @@ fun initClient() {
     while (toggleDebugging.consumeClick()) {
         enabled = !enabled
 
+        if (!enabled) {
+            currentRecording!!.end = Clock.System.now()
+            recordingCache.add(currentRecording!!)
 
+            print(currentRecording)
+            currentRecording = null
+            return
+        }
+
+        print("true")
     }
 }
 
