@@ -1,14 +1,16 @@
 package dev.nyon.packetdebugger.recording
 
 import dev.nyon.packetdebugger.config.config
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import net.minecraft.network.PacketListener
 import net.minecraft.network.chat.Component
 import net.minecraft.network.protocol.Packet
 
 data class ReceivedPacket(
-    override val packet: Packet<out PacketListener>
+    override val packet: Packet<out PacketListener>, override val executed: Instant = Clock.System.now()
 ) : RecordedPacket {
-    override fun style(packet: Packet<out PacketListener>): List<Component> {
+    override fun style(): List<Component> {
         val clazz = packet.javaClass
         val fields = clazz.declaredFields
         return buildList {
