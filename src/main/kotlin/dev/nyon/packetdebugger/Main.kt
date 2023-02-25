@@ -4,9 +4,9 @@ package dev.nyon.packetdebugger
 
 import com.mojang.blaze3d.platform.InputConstants
 import dev.nyon.packetdebugger.config.loadConfig
+import dev.nyon.packetdebugger.gui.server.openRecordingGUI
 import dev.nyon.packetdebugger.recording.Recording
 import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.minecraft.client.KeyMapping
 import net.minecraft.client.Minecraft
@@ -82,6 +82,12 @@ fun initServer() {
                 source.sendSystemMessage(literalText("Cache has been cleared!") {
                     color = 0x477127
                 })
+            }
+        }
+
+        literal("view") {
+            runs {
+                source.playerOrException.openRecordingGUI()
             }
         }
     }
